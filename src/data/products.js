@@ -30,5 +30,37 @@ export const products = [
     price: 3200,
     rating: 4.9,
     image: 'https://images.unsplash.com/photo-1519741490176-9efefb7407d5?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=123456abcdef7890'
+  },
+  {
+    id: 'p5',
+    name: 'Elegant Silver Necklace',
+    description: 'Sleek silver chain with gemstone pendant',
+    price: 3500,
+    rating: 4.8,
+    image: 'https://images.unsplash.com/photo-1515377905703-c511b6b50531?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3'
+  },
+  {
+    id: 'p6',
+    name: 'Beaded Gold Bracelet',
+    description: 'Traditional beaded gold bracelet',
+    price: 2200,
+    rating: 4.7,
+    image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3'
+  },
+  {
+    id: 'p7',
+    name: 'Turquoise Stone Necklace',
+    description: 'Handmade necklace with natural turquoise',
+    price: 4000,
+    rating: 4.9,
+    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3'
+  },
+  {
+    id: 'p8',
+    name: 'Vintage Bracelet Set',
+    description: 'Set of 3 vintage-style bracelets',
+    price: 2800,
+    rating: 4.6,
+    image: 'https://images.unsplash.com/photo-1535874142837-e6cf3565d26f?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3'
   }
 ]

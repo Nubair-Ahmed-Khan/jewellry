@@ -53,9 +53,9 @@ export default function ProductCard({product}){
       whileInView={{opacity:1, y:0}}
       transition={{duration:0.5}}
       viewport={{once:true}}
-      className="bg-white rounded-lg overflow-hidden card-premium cursor-pointer"
+      className="bg-white rounded-xl overflow-hidden card-premium cursor-pointer flex flex-col h-full"
     >
-      <div className="h-56 bg-cover bg-center relative" style={{backgroundImage:`url(${product.image})`}}>
+      <div className="h-56 bg-cover bg-center relative overflow-hidden" style={{backgroundImage:`url(${product.image})`}}>
         <div ref={imageRef} className="absolute inset-0" style={{backgroundImage:`url(${product.image})`, backgroundSize:'cover', backgroundPosition:'center'}}></div>
         <div ref={overlayRef} className="absolute inset-0 bg-black/40 opacity-0 flex items-center justify-center transition-opacity">
           <div className="text-white text-center">
@@ -64,21 +64,30 @@ export default function ProductCard({product}){
         </div>
       </div>
       
-      <div className="p-5">
-        <div className="flex justify-between items-start gap-2">
-          <div className="flex-1">
-            <h3 className="font-semibold text-lg text-teal hover:text-tealLight transition underline-animated">{product.name}</h3>
-            <p className="text-sm text-gray-500 mt-1">{product.description}</p>
-          </div>
-          <div className="text-right flex-shrink-0">
-            <div className="text-xl font-bold text-gold">Rs {product.price}</div>
-            <div className="text-sm text-yellow-500 font-semibold">★ {product.rating}</div>
+      <div className="p-5 flex-1 flex flex-col justify-between">
+        <div>
+          <div className="flex justify-between items-start gap-2">
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg text-teal hover:text-tealLight transition underline-animated">{product.name}</h3>
+              <p className="text-sm text-gray-500 mt-1">{product.description}</p>
+            </div>
+            <div className="text-right flex-shrink-0">
+              <div className="text-xl font-bold text-gold">Rs {product.price}</div>
+              <div className="text-sm text-yellow-500 font-semibold">★ {product.rating}</div>
+            </div>
           </div>
         </div>
-        
-        <a href={waLink} target="_blank" rel="noreferrer" className="mt-4 inline-block w-full text-center btn-luxury hover:text-teal">
+
+        <motion.a 
+          whileHover={{scale: 1.02}}
+          whileTap={{scale: 0.98}}
+          href={waLink} 
+          target="_blank" 
+          rel="noreferrer" 
+          className="mt-6 inline-block w-full text-center btn-luxury hover:text-teal"
+        >
           Shop Now
-        </a>
+        </motion.a>
       </div>
     </motion.div>
   )

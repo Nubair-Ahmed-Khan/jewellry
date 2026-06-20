@@ -162,10 +162,17 @@ export default function Contact(){
                 <h3 className="text-2xl font-elegant text-teal font-bold">Social Media</h3>
               </div>
               <p className="text-gray-600 mb-4">Follow us on Instagram for latest designs and updates</p>
-              <a href="https://www.instagram.com/sk_jewelry_handmade/" target="_blank" rel="noreferrer" className="inline-block btn-luxury flex items-center gap-2">
+              <motion.a 
+                whileHover={{scale: 1.02}}
+                whileTap={{scale: 0.98}}
+                href="https://www.instagram.com/sk_jewelry_handmade/" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="inline-block btn-luxury flex items-center gap-2"
+              >
                 <Camera className="w-4 h-4" />
                 @sk_jewelry_handmade
-              </a>
+              </motion.a>
             </div>
 
             {/* Locations Card */}

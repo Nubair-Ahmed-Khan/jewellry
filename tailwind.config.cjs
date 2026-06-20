@@ -12,7 +12,8 @@ module.exports = {
       },
       fontFamily: {
         elegant: ['"Playfair Display"', 'serif'],
-        sans: ['Inter', 'ui-sans-serif', 'system-ui']
+        sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
+        inter: ['Inter', 'ui-sans-serif', 'system-ui']
       },
       animation: {
         'shimmer': 'shimmer 2s infinite',

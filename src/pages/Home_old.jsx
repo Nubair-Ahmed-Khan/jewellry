@@ -1,8 +1,8 @@
-import React, {useState, useRef, useEffect} from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, {useRef, useEffect} from 'react'
+import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Zap, Award, Gift, Heart, Star, Sparkles, ShoppingBag } from 'lucide-react'
+import { Zap, Award, Gift, Heart, Star, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import HeroCarousel from '../components/HeroCarousel'
 import { products } from '../data/products'
@@ -13,51 +13,12 @@ import MarketCard from '../components/MarketCard'
 gsap.registerPlugin(ScrollTrigger)
 
 const reviews = [
-  {name:'Ayesha Khan', rating:5, text:'Beautiful craftsmanship! Exactly what I wanted. Will definitely order again.'},
-  {name:'Zain Ahmed', rating:5, text:'Premium quality and amazing designs. Highly recommend SK Jewelry!'},
-  {name:'Sara Malik', rating:5, text:'The custom necklace was stunning and shipped quickly. Such amazing detail.'},
-  {name:'Ali Rehman', rating:5, text:'Excellent service and beautiful pieces — the best jewelry shopping experience.'},
-  {name:'Hina Noor', rating:5, text:'I loved the handmade bracelet and the premium finish. Highly recommend SK Jewelry.'}
-]
-
-const markets = [
-  {
-    title:'Gohar Complex Mall',
-    desc:'Premium shopping hub',
-    image:'https://images.unsplash.com/photo-1567521464027-f127ff144326?q=80&w=1000&auto=format&fit=crop'
-  },
-  {
-    title:'Saima Mall',
-    desc:'Luxury retail spaces',
-    image:'https://images.unsplash.com/photo-1487180144351-b8472da7d491?q=80&w=1000&auto=format&fit=crop'
-  },
-  {
-    title:'Millennium Mall',
-    desc:'Contemporary marketplace',
-    image:'https://images.unsplash.com/photo-1554050857-c1ec14b6461f?q=80&w=1000&auto=format&fit=crop'
-  },
-  {
-    title:'Malir Liaquat Market',
-    desc:'Classic jewelry market',
-    image:'https://images.unsplash.com/photo-1472100065285-8658086dc193?q=80&w=1000&auto=format&fit=crop'
-  },
-  {
-    title:'Babar Market',
-    desc:'Handmade artisan hub',
-    image:'https://images.unsplash.com/photo-1564183346067-c92b1be3b3b9?q=80&w=1000&auto=format&fit=crop'
-  }
+  {name:'Ayesha Khan', rating:5, text:'Beautiful craftsmanship! Exactly what I wanted. Will definitely order again.', avatar:'https://i.pravatar.cc/100?img=5'},
+  {name:'Zain Ahmed', rating:5, text:'Premium quality and amazing designs. Highly recommend SK Jewelry!', avatar:'https://i.pravatar.cc/100?img=12'}
 ]
 
 export default function Home(){
-  const [activeReview, setActiveReview] = useState(0)
   const sectionRefs = useRef([])
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveReview((prev) => (prev + 1) % reviews.length)
-    }, 6000)
-    return () => clearInterval(timer)
-  }, [])
 
   useEffect(() => {
     sectionRefs.current.forEach((section) => {
@@ -87,10 +48,7 @@ export default function Home(){
       {/* Featured Section */}
       <section ref={el => sectionRefs.current[0] = el} className="max-w-6xl mx-auto px-6 py-16">
         <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:0.6}}>
-          <div className="flex items-center gap-3 mb-2">
-            <ShoppingBag className="w-6 h-6 text-gold" />
-            <h2 className="text-3xl md:text-4xl font-elegant text-teal font-bold">Featured Collections</h2>
-          </div>
+          <h2 className="text-3xl md:text-4xl font-elegant text-teal font-bold">✨ Featured Collections</h2>
           <p className="text-gray-600 mt-2">Handpicked pieces from our latest collection</p>
         </motion.div>
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -105,10 +63,7 @@ export default function Home(){
       {/* Hot Selling Section */}
       <section ref={el => sectionRefs.current[1] = el} className="bg-gradient-to-r from-teal/10 via-cream to-gold/10 py-16">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-3 mb-2">
-            <Zap className="w-6 h-6 text-gold" />
-            <motion.h2 initial={{opacity:0, x:-30}} whileInView={{opacity:1, x:0}} transition={{duration:0.6}} className="text-3xl md:text-4xl font-elegant text-teal font-bold">Hot Selling Items</motion.h2>
-          </div>
+          <motion.h2 initial={{opacity:0, x:-30}} whileInView={{opacity:1, x:0}} transition={{duration:0.6}} className="text-3xl md:text-4xl font-elegant text-teal font-bold">🔥 Hot Selling Items</motion.h2>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
             {products.slice(0,3).map((p, i)=> (
               <motion.div key={p.id} initial={{opacity:0, scale:0.9}} whileInView={{opacity:1, scale:1}} transition={{duration:0.5, delay:i*0.15}} viewport={{once:true}} className="group">
@@ -119,14 +74,7 @@ export default function Home(){
                   <div className="p-4">
                     <div className="font-semibold text-lg text-teal">{p.name}</div>
                     <div className="text-sm text-gray-500 mt-1">Rs {p.price} • ★ {p.rating}</div>
-                    <motion.a 
-                      whileHover={{scale: 1.02}}
-                      whileTap={{scale: 0.98}}
-                      href={`https://wa.me/923001234567?text=${encodeURIComponent('Hello, I\'m interested in ' + p.name)}`} 
-                      className="mt-3 inline-block btn-luxury text-sm"
-                    >
-                      Order Now
-                    </motion.a>
+                    <a href={`https://wa.me/923001234567?text=${encodeURIComponent('Hello, I\'m interested in ' + p.name)}`} className="mt-3 inline-block btn-luxury text-sm">Order Now</a>
                   </div>
                 </div>
               </motion.div>
@@ -138,16 +86,19 @@ export default function Home(){
       {/* Market Presence */}
       <section ref={el => sectionRefs.current[2] = el} className="max-w-6xl mx-auto px-6 py-16">
         <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:0.6}}>
-          <div className="flex items-center gap-3 mb-2">
-            <Award className="w-6 h-6 text-teal" />
-            <h2 className="text-3xl md:text-4xl font-elegant text-teal font-bold">Our Jewelry Across Markets</h2>
-          </div>
+          <h2 className="text-3xl md:text-4xl font-elegant text-teal font-bold">🏬 Our Jewelry Is Available Across Multiple Markets</h2>
           <p className="mt-2 text-gray-600 max-w-2xl">SK Jewelry Handmade supplies handmade jewelry to premium malls and thriving local markets across the city. Visit us at any of these locations!</p>
         </motion.div>
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {markets.map((m, i) => (
+          {[
+            {title:'Gohar Complex Mall', desc:'Premium shopping hub'},
+            {title:'Saima Mall', desc:'Luxury retail spaces'},
+            {title:'Millennium Mall', desc:'Contemporary marketplace'},
+            {title:'Malir Liaquat Market', desc:'Classic jewelry market'},
+            {title:'Babar Market', desc:'Handmade artisan hub'}
+          ].map((m, i) => (
             <motion.div key={i} initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} transition={{duration:0.5, delay:i*0.1}} viewport={{once:true}}>
-              <MarketCard title={m.title} desc={m.desc} image={m.image} />
+              <MarketCard title={m.title} desc={m.desc} />
             </motion.div>
           ))}
         </div>
@@ -179,28 +130,23 @@ export default function Home(){
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <motion.div initial={{opacity:0, x:-30}} whileInView={{opacity:1, x:0}} transition={{duration:0.6}} viewport={{once:true}}>
-              <div className="flex items-center gap-3 mb-2">
-                <Gift className="w-6 h-6 text-gold" />
-                <h2 className="text-3xl md:text-4xl font-elegant text-teal font-bold">Custom Jewelry Available</h2>
-              </div>
+              <h2 className="text-3xl md:text-4xl font-elegant text-teal font-bold">💎 Custom Jewelry Available</h2>
               <p className="text-gray-600 mt-4">Have a unique design in mind? We create personalized custom-made jewelry with careful handmade craftsmanship. Share your vision and let us bring it to life.</p>
               <ul className="mt-6 space-y-3">
                 <li className="flex items-center gap-3">
-                  <span className="w-6 h-6 bg-gold text-teal rounded-full flex items-center justify-center text-sm font-bold">✓</span>
+                  <span className="w-6 h-6 bg-gold text-teal rounded-full flex items-center justify-center text-sm">✓</span>
                   <span>Custom-made service tailored to your needs</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="w-6 h-6 bg-gold text-teal rounded-full flex items-center justify-center text-sm font-bold">✓</span>
+                  <span className="w-6 h-6 bg-gold text-teal rounded-full flex items-center justify-center text-sm">✓</span>
                   <span>Personalized designs with your style</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="w-6 h-6 bg-gold text-teal rounded-full flex items-center justify-center text-sm font-bold">✓</span>
+                  <span className="w-6 h-6 bg-gold text-teal rounded-full flex items-center justify-center text-sm">✓</span>
                   <span>Premium handmade craftsmanship</span>
                 </li>
               </ul>
-              <motion.div whileHover={{scale: 1.02}} whileTap={{scale: 0.98}} className="mt-6 inline-flex w-full md:w-auto">
-                <Link to="/custom" className="inline-flex items-center justify-center w-full btn-luxury py-4 text-center font-semibold">Start Your Custom Order</Link>
-              </motion.div>
+              <Link to="/custom" className="mt-6 inline-block btn-luxury">Start Your Custom Order</Link>
             </motion.div>
             <motion.div initial={{opacity:0, x:30}} whileInView={{opacity:1, x:0}} transition={{duration:0.6}} viewport={{once:true}} className="h-72 bg-cover bg-center rounded-lg shadow-lg hover-lift" style={{backgroundImage:'url(https://images.unsplash.com/photo-1519741490176-9efefb7407d5?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=123456)'}}></motion.div>
           </div>
@@ -208,35 +154,15 @@ export default function Home(){
       </section>
 
       {/* Reviews Section */}
-      <section ref={el => sectionRefs.current[4] = el} className="bg-cream py-16">
+      <section ref={el => sectionRefs.current[4] = el} className="bg-gradient-to-r from-teal to-tealLight py-16">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-3 mb-6">
-            <Star className="w-6 h-6 text-gold" />
-            <motion.h2 initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:0.6}} className="text-3xl md:text-4xl font-elegant text-deepBlack font-bold">Customer Reviews</motion.h2>
-          </div>
-          <div className="relative">
-            <AnimatePresence mode="wait">
-              <motion.div 
-                key={activeReview}
-                initial={{opacity:0, y:30}}
-                animate={{opacity:1, y:0}}
-                exit={{opacity:0, y:-30}}
-                transition={{duration:0.5}}
-              >
-                <ReviewCard review={reviews[activeReview]} />
+          <motion.h2 initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:0.6}} className="text-3xl md:text-4xl font-elegant text-white font-bold">⭐ Customer Reviews</motion.h2>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {reviews.map((r, i)=> (
+              <motion.div key={i} initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} transition={{duration:0.5, delay:i*0.15}} viewport={{once:true}}>
+                <ReviewCard review={r} />
               </motion.div>
-            </AnimatePresence>
-
-            <div className="mt-6 flex justify-center gap-3">
-              {reviews.map((_, i) => (
-                <button
-                  key={i}
-                  aria-label={`Show review ${i + 1}`}
-                  onClick={() => setActiveReview(i)}
-                  className={`h-3 w-3 rounded-full transition ${i === activeReview ? 'bg-teal' : 'bg-gray-300 hover:bg-teal/70'}`}
-                />
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>

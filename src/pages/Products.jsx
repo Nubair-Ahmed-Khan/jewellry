@@ -43,7 +43,7 @@ export default function Products(){
 
       <div className="max-w-6xl mx-auto px-6 py-12">
         <motion.div ref={searchRef} className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
+          <div> 
             <label className="block text-sm font-semibold text-teal mb-2 flex items-center gap-2">
               <Search className="w-4 h-4" />
               Search Products
@@ -90,9 +90,15 @@ export default function Products(){
           </div>
         ) : (
           <motion.div initial={{opacity:0}} animate={{opacity:1}} className="text-center py-12">
-            <div className="text-4xl mb-4">🔍</div>
             <div className="text-lg text-gray-600">No products found for "{query}"</div>
-            <button onClick={()=>setQuery('')} className="mt-4 btn-luxury">Clear Search</button>
+            <motion.button 
+              whileHover={{scale: 1.02}}
+              whileTap={{scale: 0.98}}
+              onClick={()=>setQuery('')} 
+              className="mt-4 btn-luxury"
+            >
+              Clear Search
+            </motion.button>
           </motion.div>
         )}
       </div>

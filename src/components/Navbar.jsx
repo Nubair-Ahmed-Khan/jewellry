@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import gsap from 'gsap'
-import { Menu, X, Sparkles, Moon, Sun } from 'lucide-react'
+import { Menu, X, Sparkles } from 'lucide-react'
 
 export default function Navbar(){
   const [open,setOpen] = useState(false)
@@ -25,7 +25,7 @@ export default function Navbar(){
   }, [theme])
 
   return (
-    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gold/20 shadow-sm">
+    <header className={`sticky top-0 z-40 border-b ${theme === 'dark' ? 'bg-neutral-900 border-gold/10' : 'bg-white border-gold/10'} shadow-sm`}>
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition">
           <div className="w-10 h-10 bg-gradient-to-br from-teal to-tealLight rounded-full shadow-md flex items-center justify-center text-white font-bold text-sm">SK</div>
@@ -46,21 +46,17 @@ export default function Navbar(){
           <NavLink to="/faq" className={({isActive})=>isActive? 'text-teal font-semibold underline-animated':'text-gray-700 underline-animated'}>FAQ</NavLink>
         </nav>
         
-        <div className="flex items-center gap-2">
-          <button onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')} aria-label="theme" className="p-2 rounded hover:bg-gold/10 transition">
-            {theme === 'dark' ? <Sun className="w-5 h-5 text-gold" /> : <Moon className="w-5 h-5 text-teal" />}
-          </button>
-
+     
           <div className="md:hidden">
             <button onClick={()=>setOpen(!open)} aria-label="menu" className="p-2 hover:bg-gold/20 rounded transition">
               {open ? <X className="w-6 h-6 text-teal" /> : <Menu className="w-6 h-6 text-teal" />}
             </button>
-          </div>
+         
         </div>
       </div>
       
       {/* Side drawer mobile nav */}
-      <div ref={navRef} className={`md:hidden fixed top-0 right-0 h-full w-72 max-w-[85%] backdrop-blur border-l border-gold/10 shadow-lg transform ${theme==='dark' ? 'bg-neutral-900/95 text-white' : 'bg-white/95 text-gray-800'}`} style={{transform: 'translateX(100%)', opacity:0}}>
+      <div ref={navRef} className={`md:hidden fixed top-0 right-0 h-full w-72 max-w-[85%] border-l border-gold/10 shadow-lg transform ${theme==='dark' ? 'bg-neutral-800 text-white' : 'bg-white text-gray-800'}`} style={{transform: 'translateX(100%)', opacity:0}}>
         <div className="px-6 py-8 flex flex-col gap-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
