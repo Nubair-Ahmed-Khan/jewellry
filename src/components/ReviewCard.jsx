@@ -15,3 +15,19 @@ export default function ReviewCard({review}){
               <div className="font-semibold text-teal">{review.name}</div>
               <div className="text-sm text-gray-500">Verified Customer</div>
             </div>
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-gold text-gold' : 'text-gray-300'}`} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="text-gray-700 leading-relaxed">{review.text}</div>
+      <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
+        <MessageSquare className="w-4 h-4" />
+        <span>Purchased from SK Jewelry</span>
+      </div>
+    </motion.div>
+  )
+}

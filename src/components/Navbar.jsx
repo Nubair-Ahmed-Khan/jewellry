@@ -76,4 +76,15 @@ export default function Navbar(){
             <nav className="flex flex-col gap-3 text-lg">
             <NavLink to="/" onClick={()=>setOpen(false)} className={({isActive})=>isActive? 'text-teal font-semibold':'text-gray-700'}>Home</NavLink>
             <NavLink to="/products" onClick={()=>setOpen(false)} className={({isActive})=>isActive? 'text-teal font-semibold':'text-gray-700'}>Products</NavLink>
-            <NavLink to="/necklaces" onClick={()=>setOpen(false)} className={({isActive})=>isActive? 'text-teal font-semibold':'t
+            <NavLink to="/necklaces" onClick={()=>setOpen(false)} className={({isActive})=>isActive? 'text-teal font-semibold':'text-gray-700'}>Necklaces</NavLink>
+            <NavLink to="/bracelets" onClick={()=>setOpen(false)} className={({isActive})=>isActive? 'text-teal font-semibold':'text-gray-700'}>Bracelets</NavLink>
+            <NavLink to="/custom" onClick={()=>setOpen(false)} className={({isActive})=>isActive? 'text-teal font-semibold':'text-gray-700'}>Custom</NavLink>
+            <NavLink to="/about" onClick={()=>setOpen(false)} className={({isActive})=>isActive? 'text-teal font-semibold':'text-gray-700'}>About</NavLink>
+            <NavLink to="/contact" onClick={()=>setOpen(false)} className={({isActive})=>isActive? 'text-teal font-semibold':'text-gray-700'}>Contact</NavLink>
+            <NavLink to="/faq" onClick={()=>setOpen(false)} className={({isActive})=>isActive? 'text-teal font-semibold':'text-gray-700'}>FAQ</NavLink>
+          </nav>
+        </div>
+      </div>
+    </header>
+  )
+}

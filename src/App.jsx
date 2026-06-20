@@ -41,4 +41,11 @@ export default function App(){
     <Router>
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <main class
+        <main className="flex-1">
+          <AnimatedRoutes />
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  )
+}
