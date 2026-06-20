@@ -5,6 +5,7 @@ import { Menu, X, Sparkles } from 'lucide-react'
 
 export default function Navbar(){
   const [open,setOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const navRef = useRef(null)
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
 
@@ -20,12 +21,19 @@ export default function Navbar(){
   }, [open])
 
   useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
     localStorage.setItem('theme', theme)
   }, [theme])
 
   return (
-    <header className={`sticky top-0 z-40 border-b ${theme === 'dark' ? 'bg-neutral-900 border-gold/10' : 'bg-white border-gold/10'} shadow-sm`}>
+    <header className={`sticky top-0 z-40 border-b transition-all duration-300 ${theme === 'dark' ? 'border-gold/10' : 'border-gold/10'} ${isScrolled ? (theme === 'dark' ? 'bg-neutral-950/75 text-white shadow-lg backdrop-blur-xl' : 'bg-white/80 text-gray-900 shadow-lg backdrop-blur-xl') : 'bg-transparent text-gray-900 shadow-none'}`}>
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition">
           <div className="w-10 h-10 bg-gradient-to-br from-teal to-tealLight rounded-full shadow-md flex items-center justify-center text-white font-bold text-sm">SK</div>
