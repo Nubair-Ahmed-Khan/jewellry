@@ -2,10 +2,12 @@ import React, {useState, useEffect, useRef} from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
 import { ChevronRight, Sparkles } from 'lucide-react'
+import bannerImage1 from '../images/hero/bannar1.png'
+import bannerImage2 from '../images/hero/bannar2.jpg'
 
 const slides = [
-  { id:1, title:'Handmade Luxury', subtitle:'Exquisite jewelry crafted with passion', cta:'Explore Collection', image:'https://images.unsplash.com/photo-1520975682117-8f0b8b181b39?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=b1b6e6d5d5f4f4e3'},
-  { id:2, title:'Timeless Designs', subtitle:'Premium handmade pieces that never fade', cta:'Shop Now', image:'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=9c3f0a7f9f1a2f4b'},
+  { id:1, title:'Handmade Luxury', subtitle:'Exquisite jewelry crafted with passion', cta:'Explore Collection', image: bannerImage1},
+  { id:2, title:'Timeless Designs', subtitle:'Premium handmade pieces that never fade', cta:'Shop Now', image: bannerImage2},
   { id:3, title:'Custom Creations', subtitle:'Your vision, our craftsmanship', cta:'Create Custom', image:'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=5b7d6a4f3a2b1c0d'}
 ]
 

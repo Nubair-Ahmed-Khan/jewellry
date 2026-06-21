@@ -9,12 +9,18 @@ import { products } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import ReviewCard from '../components/ReviewCard'
 import MarketCard from '../components/MarketCard'
+import GoharComplex from '../images/markets/Gohar_complex.jfif'
+import SaimaMall from '../images/markets/Saima_mall.jpg'
+import MillenniumMall from '../images/markets/Millennium_Mall.jpg'
+// import GoharComplex from '../images/markets/Gohar_complex.jfif'
+import LuckyOneMall from '../images/markets/LuckyOne_Mall.jpg'
+import Crafting from '../images/Customize_images/crafting.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const reviews = [
-  {name:'Ayesha Khan', rating:5, text:'Beautiful craftsmanship! Exactly what I wanted. Will definitely order again.'},
-  {name:'Zain Ahmed', rating:5, text:'Premium quality and amazing designs. Highly recommend SK Jewelry!'},
+  {name:'Ayesha Khan', rating:4, text:'Beautiful craftsmanship! Exactly what I wanted. Will definitely order again.'},
+  {name:'Umama Qasim', rating:5, text:'Premium quality and amazing designs. Highly recommend SK Jewelry!'},
   {name:'Sara Malik', rating:5, text:'The custom necklace was stunning and shipped quickly. Such amazing detail.'},
   {name:'Ali Rehman', rating:5, text:'Excellent service and beautiful pieces — the best jewelry shopping experience.'},
   {name:'Hina Noor', rating:5, text:'I loved the handmade bracelet and the premium finish. Highly recommend SK Jewelry.'}
@@ -24,27 +30,27 @@ const markets = [
   {
     title:'Gohar Complex Mall',
     desc:'Premium shopping hub',
-    image:'https://images.unsplash.com/photo-1567521464027-f127ff144326?q=80&w=1000&auto=format&fit=crop'
+    image:[GoharComplex,]
   },
   {
     title:'Saima Mall',
     desc:'Luxury retail spaces',
-    image:'https://images.unsplash.com/photo-1487180144351-b8472da7d491?q=80&w=1000&auto=format&fit=crop'
+    image:[SaimaMall]
   },
   {
     title:'Millennium Mall',
     desc:'Contemporary marketplace',
-    image:'https://images.unsplash.com/photo-1554050857-c1ec14b6461f?q=80&w=1000&auto=format&fit=crop'
+    image:[MillenniumMall]
   },
   {
     title:'Malir Liaquat Market',
     desc:'Classic jewelry market',
-    image:'https://images.unsplash.com/photo-1472100065285-8658086dc193?q=80&w=1000&auto=format&fit=crop'
+    image:[LuckyOneMall]
   },
   {
-    title:'Babar Market',
+    title:'Lucky One Mall',
     desc:'Handmade artisan hub',
-    image:'https://images.unsplash.com/photo-1564183346067-c92b1be3b3b9?q=80&w=1000&auto=format&fit=crop'
+    image:[LuckyOneMall]
   }
 ]
 
@@ -101,40 +107,89 @@ export default function Home(){
           ))}
         </div>
       </section>
+{/* Hot Selling Section */}
+<section
+  ref={(el) => (sectionRefs.current[1] = el)}
+  className="bg-gradient-to-r from-teal/10 via-cream to-gold/10 py-16"
+>
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="flex items-center gap-3 mb-2">
+      <Zap className="w-6 h-6 text-gold" />
 
-      {/* Hot Selling Section */}
-      <section ref={el => sectionRefs.current[1] = el} className="bg-gradient-to-r from-teal/10 via-cream to-gold/10 py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center gap-3 mb-2">
-            <Zap className="w-6 h-6 text-gold" />
-            <motion.h2 initial={{opacity:0, x:-30}} whileInView={{opacity:1, x:0}} transition={{duration:0.6}} className="text-3xl md:text-4xl font-elegant text-teal font-bold">Hot Selling Items</motion.h2>
-          </div>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {products.slice(0,3).map((p, i)=> (
-              <motion.div key={p.id} initial={{opacity:0, scale:0.9}} whileInView={{opacity:1, scale:1}} transition={{duration:0.5, delay:i*0.15}} viewport={{once:true}} className="group">
-                <div className="bg-white rounded-lg overflow-hidden card-premium hover-lift">
-                  <div className="h-64 bg-cover bg-center relative overflow-hidden" style={{backgroundImage:`url(${p.image})`}}>
-                    <div className="absolute top-3 right-3 bg-gold text-teal px-3 py-1 rounded-full text-sm font-semibold">Top Pick</div>
-                  </div>
-                  <div className="p-4">
-                    <div className="font-semibold text-lg text-teal">{p.name}</div>
-                    <div className="text-sm text-gray-500 mt-1">Rs {p.price} • ★ {p.rating}</div>
-                    <motion.a 
-                      whileHover={{scale: 1.02}}
-                      whileTap={{scale: 0.98}}
-                      href={`https://wa.me/923001234567?text=${encodeURIComponent('Hello, I\'m interested in ' + p.name)}`} 
-                      className="mt-3 inline-block btn-luxury text-sm"
-                    >
-                      Order Now
-                    </motion.a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <motion.h2
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-3xl md:text-4xl font-elegant text-teal font-bold"
+      >
+        Hot Selling Items
+      </motion.h2>
+    </div>
 
+    <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {products.slice(0, 3).map((p, i) => (
+        <motion.div
+          key={p.id}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: i * 0.15 }}
+          viewport={{ once: true }}
+          className="group"
+        >
+          <div className="bg-white rounded-lg overflow-hidden card-premium hover-lift">
+
+            {/* Image */}
+            <div className="h-64 relative overflow-hidden group">
+              {/* First Image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out group-hover:opacity-0 group-hover:scale-110"
+                style={{
+                  backgroundImage: `url(${p.images?.[0]})`,
+                }}
+              />
+
+              {/* Second Image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-0 scale-100 transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:scale-110"
+                style={{
+                  backgroundImage: `url(${
+                    p.images?.[1] || p.images?.[0]
+                  })`,
+                }}
+              />
+
+              <div className="absolute top-3 right-3 bg-gold text-teal px-3 py-1 rounded-full text-sm font-semibold">
+                Top Pick
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-4">
+              <div className="font-semibold text-lg text-teal">
+                {p.name}
+              </div>
+
+              <div className="text-sm text-gray-500 mt-1">
+                Rs {p.price} • ★ {p.rating}
+              </div>
+
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                href={`https://wa.me/923001234567?text=${encodeURIComponent(
+                  "Hello, I'm interested in " + p.name
+                )}`}
+                className="mt-3 inline-block btn-luxury text-sm"
+              >
+                Order Now
+              </motion.a>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
       {/* Market Presence */}
       <section ref={el => sectionRefs.current[2] = el} className="max-w-6xl mx-auto px-6 py-16">
         <motion.div initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:0.6}}>
@@ -202,7 +257,7 @@ export default function Home(){
                 <Link to="/custom" className="inline-flex items-center justify-center w-full btn-luxury py-4 text-center font-semibold">Start Your Custom Order</Link>
               </motion.div>
             </motion.div>
-            <motion.div initial={{opacity:0, x:30}} whileInView={{opacity:1, x:0}} transition={{duration:0.6}} viewport={{once:true}} className="h-72 bg-cover bg-center rounded-lg shadow-lg hover-lift" style={{backgroundImage:'url(https://images.unsplash.com/photo-1519741490176-9efefb7407d5?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=123456)'}}></motion.div>
+            <motion.div initial={{opacity:0, x:30}} whileInView={{opacity:1, x:0}} transition={{duration:0.6}} viewport={{once:true}} className="h-72 bg-cover bg-center rounded-lg shadow-lg hover-lift" style={{backgroundImage:`url(${Crafting})`}}></motion.div>
           </div>
         </div>
       </section>
